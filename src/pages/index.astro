@@ -1,7 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import Setar1 from "../assets/setar_1.jpg";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout description="Home page" title="Home">
-  <h1>Hi</h1>
+  <div class="grid grid-cols-2 gap-4">
+    <Image src={Setar1} alt="Setar Hero Image" class="m-auto rounded-xl" />
+    <div class="m-auto text-center">
+      <h1 class="font-[Nestor] text-8xl">Setar</h1>
+      <p class="text-xl">Ein persischer Kulturverein in der Schweiz</p>
+    </div>
+  </div>
 </Layout>
