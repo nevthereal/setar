@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/logo/setar_logo_full.png";
+
+export const routes = [
+  { name: "Über", link: "/about" },
+  { name: "Events", link: "/events" },
+  { name: "Gallerie", link: "/gallery" },
+  { name: "Geschichte", link: "/history" },
+  { name: "Newsletter", link: "/newsletter" },
+];
+---
+
+<nav class="hidden gap-4 justify-between items-center p-8 md:flex">
+  <a aria-label="Home" href="/">
+    <Image loading="eager" src={Logo} alt="Setar Logo" class="w-20" />
+  </a>
+  <div class="flex gap-4 font-bold font-[Felipa] text-xl">
+    {
+      routes.map(({ link, name }) => {
+        return <a href={link}>{name}</a>;
+      })
+    }
+  </div>
+</nav>

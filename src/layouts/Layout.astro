@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import Logo from "../assets/logo/setar_logo_full.png";
+import Nav from "../components/Nav.astro";
 
 interface Props {
   title: string;
@@ -8,14 +7,6 @@ interface Props {
 }
 
 let { description, title } = Astro.props;
-
-export const routes = [
-  { name: "Über", link: "/about" },
-  { name: "Events", link: "/events" },
-  { name: "Gallerie", link: "/gallery" },
-  { name: "Geschichte", link: "/history" },
-  { name: "Newsletter", link: "/newsletter" },
-];
 ---
 
 <!doctype html>
@@ -26,30 +17,16 @@ export const routes = [
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Setar - {title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Felipa&display=swap"
+      rel="stylesheet"
+    />
     <meta name="description" content={description} />
   </head>
   <body>
-    <nav class="hidden gap-4 justify-between items-center p-8 md:flex">
-      <a aria-label="Home" href="/">
-        <Image loading="eager" src={Logo} alt="Setar Logo" class="w-20" />
-      </a>
-      <div class="flex gap-4">
-        {
-          routes.map(({ link, name }) => {
-            return <a href={link}>{name}</a>;
-          })
-        }
-      </div>
-    </nav>
+    <Nav />
     <slot />
   </body>
-  <style is:global>
-    @font-face {
-      font-family: "Nestor";
-      src: url("/Nestor.ttf") format("ttf");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
 </html>
